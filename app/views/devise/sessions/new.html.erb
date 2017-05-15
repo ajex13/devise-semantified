@@ -1,0 +1,45 @@
+  <div class="ui relaxed equal width grid">
+  <div class="ui row">
+    <div class="ui four wide column"></div>
+    <div class="ui eight wide column segment">
+
+      <h2 class="ui center aligned dividing header"><i class="sign in icon"></i>Log in</h2>
+      <div class="ui form ">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field">
+          <%= f.label :email %>
+          <div class="ui left icon input">
+          <%= f.email_field :email, autofocus: true ,placeholder:"Email"%>
+          <i class="user icon"></i>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= f.label :password %>
+          <div class="ui left icon input">
+          <%= f.password_field :password, autocomplete: "off" ,placeholder:"Password"%>
+          <i class="lock icon"></i>
+          </div>
+        </div>
+
+        <% if devise_mapping.rememberable? -%>
+          <div class="ui checkbox">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %> <br>
+          </div>
+        <% end -%>
+
+
+        <div class="actions">
+          <%= f.submit "Log in" ,class: "ui submit button primary "%>
+        </div>
+      <% end %>
+      <div class="ui horizontal divider">or</div>
+      <div class="ui celled horizontal list">
+        <%= render "devise/shared/links" %>
+      </div>
+
+      </div>
+    </div>
+  </div>
+</div>

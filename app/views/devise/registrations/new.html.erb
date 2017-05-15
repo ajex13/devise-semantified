@@ -1,0 +1,53 @@
+<div class="ui relaxed equal width grid">
+  <div class="ui row">
+    <div class="ui four wide column"></div>
+    <div class="ui eight wide column segment">
+    <h2 class="ui center aligned dividing header"><i class="signup icon"></i>Sign up</h2>
+      <div class="ui form <%= "error" if resource.errors.any? %>">
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <div class="ui error message">
+
+            <%= devise_error_messages! %>
+          </div>
+
+
+          <div class="field ">
+            <%= f.label :email %>
+            <%= f.email_field :email, autofocus: true ,placeholder: "john@example.com"%>
+          </div>
+
+          <div class="field ">
+            <%= f.label :password %>
+
+              <% if @minimum_password_length %>
+              <div class="ui pointing below label">
+                  <%= @minimum_password_length %> characters minimum
+              </div>
+              <% end %>
+              <!-- <div  data-tooltip = "Add users to your feed"> -->
+
+                <%= f.password_field :password, autocomplete: "off" ,placeholder: "Enter Password" ,data: {toggle: "tooltip", placement: "left" }%>
+              <!-- </div> -->
+
+
+          </div>
+
+          <div class="field">
+            <%= f.label :password_confirmation %>
+            <%= f.password_field :password_confirmation, autocomplete: "off" ,placeholder: "Confirm Password" %>
+          </div>
+
+          <div class="ui left icon input">
+            <%= f.submit "Sign up" ,class: "ui submit button primary " %>
+            <i class="users icon"></i>
+          </div>
+        <% end %>
+      <div class="ui horizontal divider">or</div>
+        <div class="ui celled horizontal list">
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

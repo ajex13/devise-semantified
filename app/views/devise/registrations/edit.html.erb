@@ -1,0 +1,56 @@
+<div class="ui relaxed equal width grid">
+  <div class="ui row">
+    <div class="ui four wide column"></div>
+    <div class="ui eight wide column segment">
+        <h2 class="ui center aligned dividing header"><i class="signup icon"></i>Edit <%= resource_name.to_s.humanize %></h2>
+        <div class="ui form <%= "error" if resource.errors.any? %>">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= devise_error_messages! %>
+
+          <div class="field">
+            <%= f.label :email %>
+            <%= f.email_field :email, autofocus: true %>
+          </div>
+
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
+
+          <div class="field">
+            <%= f.label :password %>
+            <% if @minimum_password_length %>
+            <div class="ui pointing below label">
+                <%= @minimum_password_length %> characters minimum
+            </div>
+            <% end %>
+            <%= f.password_field :password, autocomplete: "off", placeholder: "Enter new password (leave blank if you don't want to change it)" %>
+
+          </div>
+
+          <div class="field">
+            <%= f.label :password_confirmation %>
+            <%= f.password_field :password_confirmation, autocomplete: "off" ,placeholder: "Confirm new password" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :current_password %>
+            <%= f.password_field :current_password, autocomplete: "off",placeholder: "(we need your current password to confirm your changes)" %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "Update" ,class: "ui submit button primary " %>
+          </div>
+        <% end %>
+        <div class="ui horizontal divider">or</div>
+
+        <h4 class="ui light grey header">Cancel my account</h4>
+
+        <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete ,class: "ui submit button  tiny "%></p>
+
+        <div class="ui celled horizontal list ">
+          <div class="item"><%= link_to "Back", :back %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

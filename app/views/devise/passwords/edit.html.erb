@@ -1,0 +1,40 @@
+<div class="ui relaxed equal width grid">
+  <div class="ui row">
+    <div class="ui four wide column"></div>
+    <div class="ui eight wide column segment">
+        <h2 class="ui center aligned dividing header"><i class="unlock icon"></i>Change your password</h2>
+        <div class="ui form <%= "error" if resource.errors.any? %>">
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+        <div class="ui error message">
+          <%= devise_error_messages! %>
+        </div>
+          <%= f.hidden_field :reset_password_token %>
+
+          <div class="field">
+            <%= f.label :password, "New password" %>
+            <% if @minimum_password_length %>
+            <div class="ui pointing below label">
+                <%= @minimum_password_length %> characters minimum
+            </div>
+            <% end %>
+            <%= f.password_field :password, autofocus: true, autocomplete: "off" , placeholder: "Enter new password" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :password_confirmation, "Confirm new password" %>
+            <%= f.password_field :password_confirmation, autocomplete: "off" , placeholder: "Confirm new password" %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "Change my password",class: "ui submit button primary "  %>
+          </div>
+        <% end %>
+
+        <div class="ui horizontal divider">or</div>
+          <div class="ui celled horizontal list">
+            <%= render "devise/shared/links" %>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
