@@ -1,10 +1,12 @@
 # Devise::Semantified
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/devise/semantified`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Generate devise views styled with semantic-ui.
 
 ## Installation
+
+dependencies :
+gem 'semantic-ui-sass', git: 'https://github.com/doabit/semantic-ui-sass.git'
+
 
 Add this line to your application's Gemfile:
 
@@ -22,7 +24,22 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+
+After installing devise run this generator to get semantic-ui styled views.
+
+
+  $ rails g devise:views:semantified
+
+  and also add this to 'app/assets/stylesheets/application.css.scss'
+
+
+```ruby
+  .field_with_errors {
+  @extend .field;
+  @extend .error;
+}
+```
+
 
 ## Development
 
@@ -38,4 +55,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
