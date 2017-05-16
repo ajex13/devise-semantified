@@ -5,13 +5,15 @@ Generate devise views styled with semantic-ui.
 ## Installation
 
 dependencies :
-gem 'semantic-ui-sass', git: 'https://github.com/doabit/semantic-ui-sass.git'
 
+```ruby
+gem 'semantic-ui-sass', git: 'https://github.com/doabit/semantic-ui-sass.git'
+```
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'devise-semantified'
+gem 'devise-semantified', git: 'https://github.com/ajex13/devise-semantified.git'
 ```
 
 And then execute:
@@ -30,14 +32,49 @@ After installing devise run this generator to get semantic-ui styled views.
 
   $ rails g devise:views:semantified
 
-  and also add this to 'app/assets/stylesheets/application.css.scss'
+and also add this to 'app/assets/stylesheets/application.css.scss'
 
 
 ```ruby
-  .field_with_errors {
+.field_with_errors {
   @extend .field;
   @extend .error;
 }
+```
+
+optional navbar for better navigation :
+
+
+```ruby
+<div class="ui top inverted menu">
+  <a href="#" class="item"><strong>BrandName</strong></a>
+  <%= link_to "Home", root_path, class: "active blue item" %>
+  <a class="item">
+    About
+  </a>
+  <a class="item">
+    Contact
+  </a>
+  <div class="right menu">
+    <% unless user_signed_in?  %>
+    <%= link_to  new_user_registration_path ,class: "item" do%>
+      <i class="signup icon"></i> Sign Up
+    <% end %>
+    <%= link_to  new_user_session_path, class: "item" do %>
+      <i class="sign in icon"></i> Login
+    <% end %>
+    <% else %>
+    <%= link_to  edit_user_registration_path , class: "item" do %>
+      <i class="settings icon"></i> Settings
+    <% end %>
+
+    <%= link_to  destroy_user_session_path ,method: :delete, data: {confirm: "Are you sure?"}, class: "item" do %>
+      <i class="sign out icon"></i> Logout
+    <% end %>
+
+    <% end %>
+  </div>
+</div>
 ```
 
 
