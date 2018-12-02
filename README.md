@@ -56,7 +56,7 @@ optional navbar for better navigation :
     Contact
   </a>
   <div class="right menu">
-    <% unless user_signed_in?  %>
+    <% if user_signed_in?  %>
     <%= link_to  new_user_registration_path ,class: "item" do%>
       <i class="signup icon"></i> Sign Up
     <% end %>
